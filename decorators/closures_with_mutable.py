@@ -10,7 +10,7 @@ def outer1():
     return c
   return inner
 
-print(outer1()())
+print(hex(id(outer1())))
 
 # With list
 def outer2():

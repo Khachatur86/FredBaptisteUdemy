@@ -5,6 +5,7 @@ def dec_1(fn):
     print("Running dec_1")
     return fn()
   return inner
+
 # Second decorator
 
 def dec_2(fn):
@@ -12,6 +13,7 @@ def dec_2(fn):
     print("Running dec_2")
     return fn()
   return inner
+
 # My_func decorated by dec_1 and dec_2
 
 # my_func = dec_1(dec_2(my_func))

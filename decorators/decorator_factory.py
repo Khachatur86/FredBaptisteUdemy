@@ -76,7 +76,7 @@
 #     return inner
 #   return dec
 
-# Вызвав функцию def_factory, мы вернем сам декоратор dec "()" - это вызов функции
+# Вызвав функцию dec_factory, мы вернем сам декоратор dec "()" - это вызов функции
 # dec = dec_factory()
 
 # # @dec

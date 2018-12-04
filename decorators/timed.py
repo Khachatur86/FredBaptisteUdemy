@@ -58,6 +58,6 @@ def fib_reduce(n):
     return fib_n[0]
 
 
-print(fib_loop(100000))
-print(fib_recursive(30))
-print(fib_reduce(100000))
+print(fib_loop(100))
+print(fib_reduce(100))
+print(fib_recursive(100))
