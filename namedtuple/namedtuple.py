@@ -22,14 +22,14 @@ pt2D = namedtuple("Point2D", ("x", "y"))
 pt2 = pt2D(y=10, x=30)
 # Можно также обращаться к переменным путем точечной нотации
 print(pt2.x)
-
+# pt2.x = 45 нельзя менять, так как неизменяемый объект
 print(isinstance(pt2, tuple))
-
+# print(tuple.__eq__)
 a = (10, 20)
 b = (10, 20)
 
-print("Ссылаются ли переменные на одну память", a is b)
-print("Равны ли переменные", a == b)
+print("Ссылаются ли переменные на одну память?", a is b)
+print("Равны ли переменные?", a == b)
 
 pt_1 = Point2D(10, 20)
 pt_2 = Point2D(10, 20)
@@ -81,10 +81,17 @@ print(max(pt1))  # выведет 40, так как pt1 - это кортеж
 
 #  a.b = a.x b.x + a.y + b.y + a.z b.z - произведение векторов
 def dot_product_3d(a, b):
-    return a.x * b.x + a.y * b.y + a.z + b.z
+    return a.x * b.x + a.y * b.y + a.z * b.z
 
 
 print(dot_product_3d(pt3d_1, pt3d_2))
+# Реализация метода для tuple - ов
+a = (1, 4)
+b = (3, 8)
+print("ZIP",tuple(zip(a, b)))
+print([e[0] * e[1] for e in tuple(zip(a, b))])
+# print((e[0] * e[1] for e in tuple(zip(a, b))))
+print(sum([e[0] * e[1] for e in tuple(zip(a, b))]))
 
 
 def dot_product(a, b):
