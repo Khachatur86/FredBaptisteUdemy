@@ -4,10 +4,18 @@
 # Output: The text as a string.
 # Precondition:
 # 0 < len(phrases) < 42
-from functools import reduce
+# from functools import reduce
+# def left_join(phrases):
+#     """
+#         Join strings and replace "right" to "left"
+#     """
+#     phrase_transform = reduce(lambda x, y: x + y, (phrase.split() for phrase in phrases))
+#     return ",".join((str.replace("right", "left") for str in phrase_transform))
+
+
 def left_join(phrases):
     """
         Join strings and replace "right" to "left"
     """
-    phrase_transform = reduce(lambda x, y: x + y, (phrase.split() for phrase in phrases))
-    return ",".join((str.replace("right", "left") for str in phrase_transform))
+
+    return ",".join(phrase.replace("right", "left") for phrase in phrases)
