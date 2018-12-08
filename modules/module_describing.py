@@ -21,3 +21,15 @@ def func():
 
 
 func()  # locals() - словарь с переменными функции func
+
+import math
+
+print(math)
+
+print(globals())
+print(type(math))  # module
+print(id(math)) # math singleton object
+
+import math
+
+print(id(math))
