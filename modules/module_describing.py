@@ -28,8 +28,16 @@ print(math)
 
 print(globals())
 print(type(math))  # module
-print(id(math)) # math singleton object
+print(id(math))  # math is singleton object
 
 import math
 
 print(id(math))
+
+import sys
+
+print(sys.modules)
+print(sys.modules["math"])
+print(id(sys.modules["math"]))  # it has same id as math
+
+print(math.__dict__)  # math atributes and functions in math module
