@@ -40,4 +40,24 @@ print(sys.modules)
 print(sys.modules["math"])
 print(id(sys.modules["math"]))  # it has same id as math
 
-print(math.__dict__)  # math atributes and functions in math module
+print(math.__dict__)  # math attributes and functions in math module
+
+import calendar
+
+# print(calendar)
+# print("---Calendar---")
+# for k,v in calendar.__dict__.items():
+#     print(f"{k}:{v}")
+
+import types
+
+print(isinstance(math, types.ModuleType))
+
+from types import ModuleType
+
+mod = ModuleType("test", "This is a test module")
+print(isinstance(mod, ModuleType))
+
+print(mod.__dict__)
+mod.pi = 3.14
+print(mod.__dict__)
