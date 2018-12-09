@@ -61,3 +61,16 @@ print(isinstance(mod, ModuleType))
 print(mod.__dict__)
 mod.pi = 3.14
 print(mod.__dict__)
+
+mod.hello = lambda: "Hello"
+print(mod.hello)
+hello = mod.hello
+print("mod" in globals())
+print("hello" in globals())
+from collections import namedtuple
+mod.Point = namedtuple("Point", "x y")
+p1 = mod.Point(0, 0)
+p2 = mod.Point(1, 1)
+print(p1)
+print(p2)
+print(dir(mod))
