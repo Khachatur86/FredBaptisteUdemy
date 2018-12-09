@@ -74,3 +74,7 @@ p2 = mod.Point(1, 1)
 print(p1)
 print(p2)
 print(dir(mod))
+PT = getattr(mod, "Point")
+print(PT(20, 30))
+PT = mod.__dict__["Point"]
+print(PT(10, 34))
