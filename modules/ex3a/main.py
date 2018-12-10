@@ -6,7 +6,7 @@ module_file = "module1_source.py"
 module_path = "."
 module_rel_file_path = os.path.join(module_path, module_file)
 module_abs_file_path = os.path.abspath(module_rel_file_path)
-
+#
 # print(module_rel_file_path)
 # print(module_abs_file_path)
 
@@ -40,7 +40,7 @@ mod.hello()
 
 import module2
 module2.hello()
-# При импорте модуля, компилятор проверяет на наличие имени модуля в sys.modules, в случае если он его там находит - то выдает его результат и выполняет его. Если имени не оказалось в нем, то выдает ошибку.
+# # При импорте модуля, компилятор проверяет на наличие имени модуля в sys.modules, в случае если он его там находит - то выдает его результат и выполняет его. Если имени не оказалось в нем, то выдает ошибку.
 for k, v in sys.modules.items():
   print(f"Key = {k}. Value = {v}")
-# print(type(sys.modules))
+print(type(sys.modules))
