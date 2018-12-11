@@ -45,7 +45,7 @@ print("Id модуля test после удаления и повторного 
 
 test.print_values()
 
-create_module_file('test', k1=10, k2='python', 
+create_module_file('test', k1=10, k2='python',
                    k3='cheese', k4='parrots')
 
 import importlib
@@ -59,6 +59,8 @@ test.print_values()
 create_module_file('test2', k1='python')
 
 from test2 import print_values
+# print_values = sys.modules["test2"]
+
 
 print("test2" in globals()) # Ожидаемо вернет False
 print("print_values" in globals()) # Ожидаемо вернет True
@@ -74,7 +76,9 @@ create_module_file('test2', k1='python', k2='cheese')
 
 importlib.reload(sys.modules["test2"])
 
-print_values() # Не сработает так как нету привязки к новому объекту перезаписанному модулю, он обращается по старому адресу
+print_values() # Не сработает так как нету привязки к новому объекту
+# перезаписанному модулю,
+# он обращается по старому адресу
 print("Id объекта до переопределения", id(print_values))
 print_values = sys.modules["test2"].print_values
 print_values()
