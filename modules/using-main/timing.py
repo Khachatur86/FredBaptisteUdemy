@@ -30,7 +30,7 @@ if __name__ == "__main__":
   parser.add_argument("-r", "--repeats",
                       type=int, default=10,
                       help="Number of times to repeat the test")
-  args =parser.parse_args()
+  args = parser.parse_args()
   print(f"timing:{args.code}...")
   print(timeit(code=str(args.code), repeats=args.repeats))
   # print(args.code)
