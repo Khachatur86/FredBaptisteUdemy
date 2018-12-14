@@ -1,9 +1,6 @@
 def checkio(text: str) -> str:
-    text = text.lower()
-    text_list = list(filter(lambda x: x not in ["?", "!", " ", ","], text))
-    if len(text_trans) == len(set(text_trans)):
-        return min(text_trans, key=ord)
-    return max(text_trans, key=text_trans.count)
+
+    return {key: value for key, value in zip(text,[text.count(x) for x in text])}
 
 
 print(checkio("Hello World!!"))
