@@ -1,7 +1,6 @@
 import json
 import os
 
-
 def json_comparing(json1: "Json1 filename",
                    json2: "Json2 filename") -> "Boolean":
     """The function returns True if the corresponding
@@ -30,4 +29,4 @@ def json_comparing(json1: "Json1 filename",
     return all(map(lambda x: x[0] == x[1], id_values_combinations))
 
 
-print(json_comparing("json_1.json", "json_2.json"))
+# print(json_comparing("json_1.json", "json_2.json"))
