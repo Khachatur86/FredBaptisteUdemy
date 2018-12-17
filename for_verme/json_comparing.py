@@ -14,8 +14,11 @@ def json_comparing(json1: "Json1 filename",
 
     json_file_rel_path_2 = os.path.join(os.path.dirname(__file__), json2)
     with open(json_file_rel_path_2) as json_2:
-        data_2 = json.load(json_2)
+        data_2 = json.load(json_2
 
+    # Проверка на размерность
+    if len(data_1) != len(data_2):
+        return False
     # Значение по ключам
 
     id_values_list_1 = [f'{val["id"]:0.5f}' for val in data_1["ids"]]
