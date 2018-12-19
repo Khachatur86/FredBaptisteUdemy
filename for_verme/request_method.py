@@ -1,8 +1,8 @@
 import requests
 
 url = 'https://httpbin.org/post'
-files = {'file': open('yoda.jpeg', 'rb')}
+files = {'file': open('images/yoda.jpeg', 'rb')}
 
 r = requests.post(url, files=files)
 
-print(r.text)
+print(r.text) # Для проверки
