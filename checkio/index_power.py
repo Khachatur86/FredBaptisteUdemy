@@ -11,3 +11,4 @@ if __name__ == '__main__':
     assert index_power([0, 1], 0) == 1, "Zero power"
     assert index_power([1, 2], 3) == -1, "IndexError"
     print("Coding complete? Click 'Check' to review your tests and earn cool rewards!")
+    print("something")
