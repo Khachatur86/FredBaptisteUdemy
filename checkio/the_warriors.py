@@ -58,3 +58,13 @@ print(0 > 0)
 
 # print('1', khachatur.info())
 # print(senja.info())
+# senja = Knight()
+# print('1',fight(khachatur, senja))
+# print(senja.health, khachatur.health )
+# print('2',fight(senja, khachatur))
+# print()
+
+# print('3',fight(khachatur, senja))
+
+# print('1', khachatur.info())
+# print(senja.info())
