@@ -39,4 +39,5 @@ if __name__ == '__main__':
     assert b.volume() == 60, "Volume"
     assert b2.volume() == 30, "Volume2"
     assert str(b) == "Building(1, 2, 2, 3, 10)", "String"
+    assert str(b) == "Building(1, 2, 2, 3, 10)", "String"
 
