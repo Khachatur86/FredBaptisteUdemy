@@ -1,5 +1,5 @@
 from parse_utils import parse_date
-#1 Description
+
 # Files
 fname_personal = 'data/personal_info.csv'
 fname_employment = 'data/employment.csv'
