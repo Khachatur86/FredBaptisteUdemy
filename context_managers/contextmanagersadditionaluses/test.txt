@@ -1,0 +1,3 @@
+<_io.TextIOWrapper name='test.txt' mode='w' encoding='UTF-8'>
+Lin656e 1
+Line 2
