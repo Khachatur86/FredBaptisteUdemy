@@ -100,7 +100,7 @@ class File:
 
 
 # with File('test1.txt', 'r') as f:
-#   print(f.readlines() )
+#   print(f.readlines())
 
 def test():
   with File('test2.txt', 'w') as f:
