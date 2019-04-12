@@ -190,17 +190,17 @@ from timeit import timeit
 # print(timeit('numbers[Number(500)]', globals=globals(), number=10_000))
 # print(timeit('same_hashes[SameHash(500)]', globals=globals(), number=10_000))
 
-def func_fstring():
-  for i in range(1000):
-    return f'{i}'
+# def func_fstring():
+#   for i in range(1000):
+#     return f'{i}'
 
-def func_format():
-  for i in range(1000):
-    return '{}'.format(i)
+# def func_format():
+#   for i in range(1000):
+#     return '{}'.format(i)
 
-def func_format_str():
-  for i in range(1000):
-    return '%s'%i
+# def func_format_str():
+#   for i in range(1000):
+#     return '%s'%i
 
 # print('f_string', timeit('func_fstring()', globals=globals(), number=1000_000))
 # print('format string', timeit('func_format()', globals=globals(), number=1000_000))
@@ -218,3 +218,122 @@ def func_format_str():
 # format string 1.260975215001963
 # % string 1.0864754959984566
 
+class Point:
+  def __init__(self, x, y):
+    self.x = x
+    self.y = y
+
+  def __repr__(self):
+    return f"({self.x}, {self.y})"
+  
+pt = Point(1, 2)
+print(pt)
+
+points = {
+  Point(0, 0): 'origin',
+  Point(1, 1): 'second pt'
+}
+
+pprint(points)
+
+# print(points[Point(0, 0)]) # KeyError
+
+class Point:
+  def __init__(self, x, y):
+    self.x = x
+    self.y = y
+
+  def __repr__(self):
+    return f"({self.x}, {self.y})"
+
+  def __eq__(self, other):
+    if isinstance(other, Point):
+      return self.x == other.x and self.y == other.y
+    else:
+      return False
+    
+  def __hash__(self):
+    return hash((self.x, self.y))
+
+points = {
+  Point(0, 0): 'origin',
+  Point(1, 1): 'second pt'
+}
+
+pprint(points)
+
+print(points[Point(0, 0)]) # KeyError does not happen.
+
+class Point:
+  def __init__(self, x, y):
+    self.x = x
+    self.y = y
+
+  def __repr__(self):
+    return f"({self.x}, {self.y})"
+
+  def __eq__(self, other):
+    if isinstance(other, tuple) and len(other) == 2:
+      other = Point(*other)
+    if isinstance(other, Point):
+      return self.x == other.x and self.y == other.y
+    else:
+      return False
+    
+  def __hash__(self):
+    return hash((self.x, self.y))
+
+points = {
+  Point(0, 0): 'origin',
+  Point(1, 1): 'second pt'
+}
+
+print(points[(0, 0)])
+pt1 = Point(0, 0)
+pt2 = Point(1, 1)
+points = {
+  pt1: 'origin',
+  pt2: 'pt at (1,1)',
+  (10,0) : 'Khachatur'
+}
+
+print(points[pt1], points[Point(0, 0)], points[(0, 0)])
+print('Before key of pt1', hash(tuple(points.keys())[0]))
+print('Before', hash(pt1))
+pt1.x = 10
+print('After ', hash(pt1))
+print('After key of pt1', hash(tuple(points.keys())[0]))
+
+print(points[pt1])
+
+class Person:
+  def __init__(self, id, name, age):
+    self._id = id
+    self.name = name
+    self.age = age
+
+  def __repr__(self):
+    return f"Person(id={self._id}, name={self.name}, age={self.age})"
+
+  def __eq__(self, other):
+    if isinstance(other, Person):
+      return self._id == other._id
+    else:
+      return False
+  
+  def __hash__(self):
+    return hash(self._id)
+
+p1 = Person('john', 'John', 78)
+
+persons = {
+  p1: 'john object'
+}
+
+print(persons[p1])
+print(persons[Person('john', 'John', 78)])
+
+p1.name = 'Eric'
+p1.age = 75
+print(p1)
+print(persons[p1])
