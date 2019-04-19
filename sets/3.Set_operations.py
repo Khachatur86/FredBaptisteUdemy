@@ -51,5 +51,35 @@ s2 = {1, 2, 3}
 s3 = {1, 2, 3, 4}
 s4 = {10, 20, 30}
 print("s1.issubset(s2) - ",s1.issubset(s2))
+# Является ли множество s1 подмножеством s2
 # Analog
-print("s1<=s2",s1<=s2)
+print("s1 <= s2",s1<=s2)
+print('s1 < s2 - ', s1 < s2)
+print('s3.issuperset(s1) - ',s3.issuperset(s1))
+# Является ли множество s3 надмножеством s1
+# Операторы | & принимают слева и справа от себя только set
+# В случаях ниже операторы принимают на вход отличные от множества структуры данных, поэтому операции приведут к ошибкам
+# {1, 2} & [3, 5]
+# {1, 2} | [4, 6]
+# Хотя: 
+print({1, 4}.intersection([2, 4]))
+print({1, 6}.union([1, 9]))
+# but 
+print({1, 3, 4}.intersection([(1, 4), (5, 6)]))
+
+print(set([(1, 5), (5, 8)]))
+
+a = 0b101010
+b = 0b110100
+print(f"a = {a}, b = {b}")
+print('Binary (умножение) &')
+c = a & b
+print(bin(a))
+print(bin(b))
+print(bin(c))
+
+print('Binary (сложение)|')
+c = a | b
+print(bin(a))
+print(bin(b))
+print(bin(c))
