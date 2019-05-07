@@ -29,3 +29,41 @@ mi_k = t.keys() - d.keys()
 print(ex_k or mi_k)
 is_ok, err_msg = match_keys(d, t, 'some.path')
 # print(is_ok, err_msg)
+
+def match_types(data, template, path):
+  for key, value in template.items():
+    if isinstance(value, dict):
+      template_type = dict
+    else:
+      template_type = value
+    data_value = data.get(key, object())
+    # print(f"data_value - {data_value}, template_type - {template_type}")
+    if not isinstance(data_value, template_type):
+      err_msg = ('incorrect type: ' + path + '.' + key + 
+                                ' -> expected ' + template_type.__name__ + 
+                                 ', found ' + type(data_value).__name__)
+      return False, err_msg
+  return True, None
+
+print('====================================')
+t = {'a': int, 'b': str, 'c': {'d': int}}
+d = { 'b': 'test', 'a': 100,'c':{'some': 'value'}}
+print(match_types(d, t, 'some.path'))
+
+
+# print(isinstance(bool, type))
+# # print(type(object()))
+d = { 'b': 'test', 'a': 100,'c': 'unexpected'}
+print(match_types(d, t, 'some.path'))
+
+def recurse_validate(data, template, path):
+  is_ok, err_msg = match_keys(data, template, path)
+  if not is_ok:
+    return False, err_msg
+
+  is_ok, err_msg = match_types(data, template, path)
+  if not is_ok:
+    return False, err_msg
+
+  dictionary_type_keys = {key for key, value in template.items() if isinstance(value, dict)}
+  
