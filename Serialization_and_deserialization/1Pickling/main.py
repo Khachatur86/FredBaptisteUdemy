@@ -105,5 +105,64 @@ print(d2)
 d1 = {'a': 1, 'b': 2}
 d2 = {'x': 100, 'y': d1, 'z': d1}
 ser = pickle.dumps(d2)
+del d1
+del d2
 deser = pickle.loads(ser)
 print(deser['y'] is deser['z'])
+
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+  
+  def __eq__(self, other):
+    return self.name == other.name and self.age == other.age
+  
+  def __repr__(self):
+    return f"Person(name={self.name}, age={self.age})"
+
+
+
+john = Person('John Cleese', 79)
+eric = Person('Eric Idle', 75)
+michael = Person('Michael Palin', 75)
+
+parrot_sketch = {
+    "title": "Parrot Sketch",
+    "actors": [john, michael]
+}
+
+ministry_sketch = {
+    "title": "Ministry of Silly Walks",
+    "actors": [john, michael]
+}
+
+joke_sketch = {
+    "title": "Funniest Joke in the World",
+    "actors": [eric, michael]
+}
+
+
+fan_favorites = {
+    "user_1": [parrot_sketch, joke_sketch],
+    "user_2": [parrot_sketch, ministry_sketch]
+}
+
+from pprint import pprint
+
+pprint(fan_favorites)
+
+print(fan_favorites['user_1'][0] is fan_favorites['user_2'][0]
+)
+
+parrot_id_original = id(parrot_sketch)
+
+ser = pickle.dumps(fan_favorites)
+new_fan_favorites = pickle.loads(ser)
+print(fan_favorites == new_fan_favorites)
+
+print(id(fan_favorites['user_1'][0]), id(new_fan_favorites['user_1'][0])
+)
+
+print(new_fan_favorites['user_1'][0] is new_fan_favorites['user_2'][0]
+)
